@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultoria de Design Online · Galindo Interiors</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0E0C09;
+  --surface: #171410;
+  --cream: #F5F0E8;
+  --sand: #E8DFCE;
+  --taupe: #C4B49A;
+  --mocha: #8B7355;
+  --accent: #B8956A;
+  --accent-light: #D4B48A;
+  --text: #F0EBE2;
+  --muted: #7A6A58;
+  --border: rgba(196,180,154,0.12);
+  --border-hover: rgba(184,149,106,0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse at center bottom, rgba(184,149,106,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 48px;
+  animation: fadeDown 0.8s ease both;
+}
+
+.logo-sq {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 500;
+  color: var(--bg);
+}
+
+.logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--taupe);
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  animation: fadeDown 0.8s ease 0.1s both;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 7vw, 68px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 24px;
+  animation: fadeDown 0.8s ease 0.2s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mocha);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+  animation: fadeDown 0.8s ease 0.3s both;
+}
+
+.hero-sub strong { color: var(--taupe); font-weight: 400; }
+
+.scroll-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeDown 0.8s ease 0.4s both;
+  cursor: pointer;
+}
+
+.scroll-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 14px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.scroll-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.scroll-btn:active { transform: translateY(0); }
+
+.scroll-note {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* DECORATIVE LINE */
+.deco-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin: 0 auto 60px;
+  opacity: 0.4;
+}
+
+/* FORM SECTION */
+.form-section {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-label-top {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+}
+
+/* FORM CARD */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 32px;
+  position: relative;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+.field-group {
+  margin-bottom: 24px;
+}
+
+.field-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-bottom: 8px;
+}
+
+.field-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+.field-input::placeholder { color: rgba(196,180,154,0.3); }
+.field-input:focus {
+  border-color: var(--border-hover);
+  background: rgba(184,149,106,0.04);
+}
+
+select.field-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B7355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+select.field-input option {
+  background: #1A1510;
+  color: var(--text);
+}
+
+/* COMODOS GRID */
+.comodos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.comodo-btn {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--mocha);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  user-select: none;
+}
+
+.comodo-btn:hover {
+  border-color: rgba(184,149,106,0.25);
+  color: var(--taupe);
+}
+
+.comodo-btn.selected {
+  background: rgba(184,149,106,0.1);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+/* SUBMIT */
+.submit-btn {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 8px;
+}
+
+.submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.form-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+/* SUCCESS STATE */
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon {
+  width: 56px; height: 56px;
+  background: rgba(184,149,106,0.1);
+  border: 1px solid rgba(184,149,106,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 22px;
+}
+
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.success-text {
+  font-size: 14px;
+  color: var(--mocha);
+  line-height: 1.7;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* TRUST BAR */
+.trust-bar {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.trust-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--accent-light);
+}
+
+.trust-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .form-card { padding: 28px 20px; }
+  .comodos-grid { grid-template-columns: repeat(2, 1fr); }
+  .trust-bar { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="logo-mark">
+    <div class="logo-sq">GI</div>
+    <div class="logo-name">Galindo Interiors</div>
+  </div>
+  <div class="eyebrow">Consultoria Online · Método FLOW</div>
+  <h1 class="hero-title">
+    Sua casa vai <em>parecer<br>seu lar</em> de verdade.
+  </h1>
+  <p class="hero-sub">
+    Atendo <strong>brasileiras em qualquer país do mundo</strong> — 100% online, do primeiro contato ao resultado final.
+  </p>
+  <div class="scroll-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">
+    <button class="scroll-btn">Quero minha consultoria</button>
+    <span class="scroll-note">Preencha em 2 minutos · Totalmente gratuito</span>
+  </div>
+</section>
+
+<!-- DECO -->
+<div class="deco-line"></div>
+
+<!-- FORM SECTION -->
+<section class="form-section" id="form">
+  <div class="form-header">
+    <div class="form-label-top">Primeiro passo</div>
+    <div class="form-title">Me conta sobre o seu espaço</div>
+  </div>
+
+  <div class="form-card" id="form-card">
+
+    <!-- NOME -->
+    <div class="field-group">
+      <label class="field-label" for="nome">Seu nome</label>
+      <input class="field-input" type="text" id="nome" placeholder="Como posso te chamar?" autocomplete="given-name">
+    </div>
+
+    <!-- WHATSAPP -->
+    <div class="field-group">
+      <label class="field-label" for="whatsapp">WhatsApp</label>
+      <input class="field-input" type="tel" id="whatsapp" placeholder="+1 (555) 000-0000" autocomplete="tel">
+    </div>
+
+    <!-- PAIS -->
+    <div class="field-group">
+      <label class="field-label" for="pais">País onde você mora</label>
+      <select class="field-input" id="pais">
+        <option value="" disabled selected>Selecione seu país</option>
+        <option value="EUA">Estados Unidos 🇺🇸</option>
+        <option value="Portugal">Portugal 🇵🇹</option>
+        <option value="Brasil">Brasil 🇧🇷</option>
+        <option value="Canada">Canadá 🇨🇦</option>
+        <option value="Reino Unido">Reino Unido 🇬🇧</option>
+        <option value="Irlanda">Irlanda 🇮🇪</option>
+        <option value="Espanha">Espanha 🇪🇸</option>
+        <option value="Italia">Itália 🇮🇹</option>
+        <option value="Franca">França 🇫🇷</option>
+        <option value="Alemanha">Alemanha 🇩🇪</option>
+        <option value="Australia">Austrália 🇦🇺</option>
+        <option value="outro">Outro país</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TIPO DE SERVIÇO -->
+    <div class="field-group">
+      <label class="field-label">O que você precisa?</label>
+      <select class="field-input" id="servico">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="consultoria">Consultoria — orientação e direção do espaço</option>
+        <option value="projeto">Projeto completo — do conceito ao resultado final</option>
+        <option value="nao-sei">Ainda não sei — quero entender minhas opções</option>
+      </select>
+    </div>
+
+    <!-- TIPO DE IMÓVEL -->
+    <div class="field-group">
+      <label class="field-label">Tipo de imóvel</label>
+      <select class="field-input" id="imovel">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="casa">Casa</option>
+        <option value="apartamento">Apartamento</option>
+      </select>
+    </div>
+
+    <!-- PRÓPRIO OU ALUGADO -->
+    <div class="field-group">
+      <label class="field-label">Situação do imóvel</label>
+      <select class="field-input" id="situacao">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="proprio">Próprio</option>
+        <option value="alugado">Alugado</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CÔMODOS -->
+    <div class="field-group">
+      <label class="field-label">Qual(is) cômodo(s) precisa de atenção? <span style="color:var(--muted);font-size:10px;text-transform:none;letter-spacing:0">(pode marcar mais de um)</span></label>
+      <div class="comodos-grid">
+        <div class="comodo-btn" onclick="toggleComodo(this, 'sala')">Sala</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'cozinha')">Cozinha</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'quarto-principal')">Quarto principal</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'quarto-filhos')">Quarto filhos</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'banheiro')">Banheiro</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'area-lazer')">Área de lazer</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'home-office')">Home office</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'varanda')">Varanda</div>
+        <div class="comodo-btn" onclick="toggleComodo(this, 'todo')">Toda a casa</div>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+      Enviar minha solicitação
+    </button>
+
+    <p class="form-note">
+      Suas informações são confidenciais e serão usadas apenas para a consultoria.<br>
+      Renata responde em até 24h pelo WhatsApp.
+    </p>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-state" id="success">
+    <div class="success-icon">✦</div>
+    <div class="success-title">Recebido com carinho</div>
+    <p class="success-text">
+      Obrigada por confiar no meu trabalho.<br><br>
+      Vou analisar as suas respostas e entrar em contato pelo WhatsApp em até <strong style="color:var(--taupe)">24 horas</strong> para conversarmos sobre o seu espaço.
+    </p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-num">100%</div>
+    <div class="trust-label">Online</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">∞</div>
+    <div class="trust-label">Países atendidos</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">FLOW</div>
+    <div class="trust-label">Método próprio</div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Galindo Interiors · @galindointeriors · Salt Lake City, Utah
+</footer>
+
+<script>
+const comodosSelecionados = new Set();
+
+function toggleComodo(el, value) {
+  if (comodosSelecionados.has(value)) {
+    comodosSelecionados.delete(value);
+    el.classList.remove('selected');
+  } else {
+    comodosSelecionados.add(value);
+    el.classList.add('selected');
+  }
+}
+
+function submitForm() {
+  const nome = document.getElementById('nome').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+  const pais = document.getElementById('pais').value;
+  const servico = document.getElementById('servico').value;
+  const imovel = document.getElementById('imovel').value;
+  const situacao = document.getElementById('situacao').value;
+
+  if (!nome || !whatsapp || !pais || !servico || !imovel || !situacao) {
+    const inputs = document.querySelectorAll('.field-input');
+    inputs.forEach(inp => {
+      if (!inp.value) {
+        inp.style.borderColor = 'rgba(184,80,80,0.5)';
+        setTimeout(() => inp.style.borderColor = '', 2000);
+      }
+    });
+    return;
+  }
+
+  if (comodosSelecionados.size === 0) {
+    const grid = document.querySelector('.comodos-grid');
+    grid.style.outline = '1px solid rgba(184,80,80,0.4)';
+    grid.style.borderRadius = '4px';
+    setTimeout(() => { grid.style.outline = ''; grid.style.borderRadius = ''; }, 2000);
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const comodos = Array.from(comodosSelecionados).join(', ');
+  const mensagem = `Olá Renata! Preenchi o formulário de consultoria.\n\nNome: ${nome}\nPaís: ${pais}\nServiço: ${servico}\nImóvel: ${imovel} (${situacao})\nCômodos: ${comodos}`;
+  const tel = '14012266781';
+  const url = `https://wa.me/${tel}?text=${encodeURIComponent(mensagem)}`;
+
+  setTimeout(() => {
+    document.getElementById('form-card').style.display = 'none';
+    const success = document.getElementById('success');
+    success.style.display = 'block';
+    success.style.animation = 'fadeDown 0.5s ease both';
+    window.open(url, '_blank');
+  }, 800);
+}
+</script>
+</body>
+</html>
